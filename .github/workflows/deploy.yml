@@ -29,3 +29,9 @@ jobs:
             --exclude ".git/*" \
             --exclude ".github/*" \
             --exclude ".gitignore"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E2M9W9A92VUI1T \
+            --paths "/*"
